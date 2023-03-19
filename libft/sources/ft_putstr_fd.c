@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: edpaulin <edpaulin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/19 19:47:19 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/08/03 17:17:20 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/09/30 17:17:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "libft.h"
 
-int	main(void)
+/*
+*	DESCRIPTION
+*	Outputs the string ’s’ to the given file descriptor.
+*/
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	ft_putendl_fd("Welcome to the cub3D", 1);
-	// TODO
-	// Validate input
-	// Validate textures
-	// Validate Map
-	// Game
-	return (0);
+	if (s && fd >= 0)
+		write(fd, s, ft_strlen(s));
 }

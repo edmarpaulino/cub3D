@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/19 19:47:19 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/08/09 15:43:19 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/10/13 12:14:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(void)
-{
-	ft_putendl_fd("Welcome to the cub3D", 1);
-	// TODO
-	// Validate input
-	// Validate textures
-	// Validate Map
-	// Game
-	return (0);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+
+char	*get_next_line(int fd);
+
+#endif

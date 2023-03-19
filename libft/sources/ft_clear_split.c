@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_clear_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/19 19:47:19 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/10/12 13:02:43 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/10/12 18:02:40 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_clear_split(char **ptr)
 {
-	ft_putendl_fd("Welcome to the cub3D", 1);
-	// TODO
-	// Validate input
-	// Validate textures
-	// Validate Map
-	// Game
-	return (0);
+	int	i;
+
+	i = -1;
+	while (ptr[++i])
+		free(ptr[i]);
+	free(ptr);
 }

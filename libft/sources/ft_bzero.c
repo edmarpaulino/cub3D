@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: edpaulin <edpaulin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/19 19:47:19 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/08/03 10:27:33 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/09/30 16:37:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "libft.h"
 
-int	main(void)
+/*
+*	DESCRIPTION
+*	The bzero() function writes n zeroed bytes to the string s.
+*	If n is zero, bzero() does nothing.
+*/
+
+void	ft_bzero(void *s, size_t n)
 {
-	ft_putendl_fd("Welcome to the cub3D", 1);
-	// TODO
-	// Validate input
-	// Validate textures
-	// Validate Map
-	// Game
-	return (0);
+	while (n--)
+		*(unsigned char *)(s++) = 0;
 }

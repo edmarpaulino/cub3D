@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strupper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/19 19:47:19 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/10/07 19:01:08 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/10/07 19:13:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_strupper(char *str)
 {
-	ft_putendl_fd("Welcome to the cub3D", 1);
-	// TODO
-	// Validate input
-	// Validate textures
-	// Validate Map
-	// Game
-	return (0);
+	while (*str)
+	{
+		*str = ft_toupper(*str);
+		str++;
+	}
 }
