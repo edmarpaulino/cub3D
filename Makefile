@@ -6,26 +6,27 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/19 19:48:18 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/20 19:56:30 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.DEFAULT_GOAL = all
+.DEFAULT_GOAL		=	all
 
-NAME = cub3D
+NAME				=	cub3D
 
-SRC_DIR = src
-SRC_FILES = main.c
+SRC_DIR				=	src
+SRC_FILES			=	main.c \
+						exit_error.c
 
-OBJ_DIR = obj
-OBJ_FILES = $(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
+OBJ_DIR				=	obj
+OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
 
-LIBFT_DIR = libft
-LIBFT_LIB = -L$(LIBFT_DIR) -lft
-LIBFT_INC = -I $(LIBFT_DIR)/includes
+LIBFT_DIR			=	libft
+LIBFT_LIB			=	-L$(LIBFT_DIR) -lft
+LIBFT_INC			=	-I $(LIBFT_DIR)/includes
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CC					=	cc
+CFLAGS				=	-Wall -Wextra -Werror 
 
 all: $(NAME)
 

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/20 19:58:28 by edpaulin         ###   ########.fr       */
+/*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
+/*   Updated: 2023/03/20 19:52:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#ifndef CUB3D_H
+# define CUB3D_H
 
-int	main(int argc, char *argv[])
-{
-	if (argc < 2)
-		exit_error("Map file was not informed");
-	if (argc > 2)
-		exit_error("The program requires only one map file");
-	if (argv)
-		ft_putendl_fd("Welcome to the cub3D", STDOUT);
-	return (0);
-}
+# include <stdlib.h>
+
+# include "../libft/includes/libft.h"
+# include "./defs.h"
+
+void	exit_error(char *err);
+
+#endif
