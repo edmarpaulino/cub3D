@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/20 19:54:12 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:21:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+
+# define MAP_EXT ".cub"
 
 typedef struct s_map_file {
 	int		*grid;
