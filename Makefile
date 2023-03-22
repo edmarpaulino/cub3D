@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/20 20:37:40 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/22 20:43:57 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,12 @@ NAME				=	cub3D
 
 SRC_DIR				=	src
 SRC_FILES			=	main.c \
+						queue.c \
 						exit_error.c \
 						get_map_file.c \
-						free_map_file.c
+						free_map_file.c \
+						check_file.c \
+						get_file_content.c
 
 OBJ_DIR				=	obj
 OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
@@ -28,7 +31,7 @@ LIBFT_LIB			=	-L$(LIBFT_DIR) -lft
 LIBFT_INC			=	-I $(LIBFT_DIR)/includes
 
 CC					=	cc
-CFLAGS				=	-Wall -Wextra -Werror 
+CFLAGS				=	-g -Wall -Wextra -Werror 
 
 all: $(NAME)
 

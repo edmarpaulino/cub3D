@@ -6,15 +6,25 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 20:14:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/20 20:43:58 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:48:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-static void	check_file(char *filename);
-static int	is_cub_file(char *filename);
-static int	is_file(char *filename);
+static void		init_map_file(t_map_file *map_file);
+
+static void	print_file_content(t_queue *file_content)
+{
+	t_queue_item	*content;
+
+	content = file_content->first;
+	while (content)
+	{
+		ft_putendl_fd(content->value, STDOUT);
+		content = content->next;
+	}
+}
 
 t_map_file	*get_map_file(char *filename)
 {
@@ -24,34 +34,26 @@ t_map_file	*get_map_file(char *filename)
 	map_file = (t_map_file *)malloc(sizeof(t_map_file));
 	if (map_file == NULL)
 		exit_error("Cannot allocate memory in get_map_file");
+	init_map_file(map_file);
+	map_file->file_content = get_file_content(filename);
+	if (!map_file->file_content)
+		exit_error("Cannot get file content");
+	print_file_content(map_file->file_content);
 	return (map_file);
 }
 
-static void	check_file(char *filename)
+static void	init_map_file(t_map_file *map_file)
 {
-	if (ft_strlen(ft_strrchr(filename, '/') + 1) < 5)
-		exit_error("Invalid file");
-	if (is_cub_file(filename) != 1)
-		exit_error("Invalid file type");
-	if (is_file(filename) != 1)
-		exit_error("File does not exist");
-}
-
-static int	is_cub_file(char *filename)
-{
-	char	*filetype;
-
-	filetype = &filename[ft_strlen(filename) - 4];
-	return (ft_strcmp(filetype, MAP_EXT) == 0);
-}
-
-static int	is_file(char *filename)
-{
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	close(fd);
-	return (1);
+	map_file->grid = NULL;
+	map_file->width = -1;
+	map_file->height = -1;
+	map_file->texture_no = NULL;
+	map_file->texture_so = NULL;
+	map_file->texture_ea = NULL;
+	map_file->texture_we = NULL;
+	map_file->ceil_color = -1;
+	map_file->floor_color = -1;
+	map_file->player_angle = -1;
+	map_file->player_x = -1;
+	map_file->player_y = -1;
 }
