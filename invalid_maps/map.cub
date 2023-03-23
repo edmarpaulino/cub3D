@@ -1,7 +1,7 @@
-N ./images/graystone.xpm
+NO ./images/graystone.xpm
 SO ./images/mossystone.xpm
 EA ./images/redbrick.xpm
-WE ./images/eagle.xpm
+WE 47,47,47
 C 47,47,47
 F 142,142,142
 

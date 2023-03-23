@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:39:10 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/22 20:41:20 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/23 07:47:53 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ static int	is_cub_file(char *filename);
 
 void	check_file(char *filename)
 {
-	if (ft_strlen(ft_strrchr(filename, '/') + 1) < 5)
+	char	*file_filename;
+
+	file_filename = ft_strrchr(filename, '/');
+	if (!file_filename)
+		file_filename = filename;
+	else
+		file_filename++;
+	if (ft_strlen(file_filename) < 5)
 		exit_error("Invalid file");
 	if (is_cub_file(filename) != 1)
 		exit_error("Invalid file type");

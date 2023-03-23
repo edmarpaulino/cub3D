@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 20:14:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/22 20:48:30 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/23 07:31:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static void	print_file_content(t_queue *file_content)
 	}
 }
 
+static void	print_map_file(t_map_file *map_file)
+{
+	printf("\n\n");
+	printf("%s\n", map_file->texture_no);
+	printf("%s\n", map_file->texture_so);
+	printf("%s\n", map_file->texture_ea);
+	printf("%s\n", map_file->texture_we);
+	printf("%d\n", map_file->ceil_color);
+	printf("%d\n", map_file->floor_color);
+	printf("\n\n");
+}
+
 t_map_file	*get_map_file(char *filename)
 {
 	t_map_file	*map_file;
@@ -38,6 +50,8 @@ t_map_file	*get_map_file(char *filename)
 	map_file->file_content = get_file_content(filename);
 	if (!map_file->file_content)
 		exit_error("Cannot get file content");
+	load_textures(map_file);
+	print_map_file(map_file);
 	print_file_content(map_file->file_content);
 	return (map_file);
 }

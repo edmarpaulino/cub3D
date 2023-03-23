@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/22 20:47:43 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/23 06:53:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define STDERR 2
 
 # define MAP_EXT ".cub"
+# define TEX_EXT ".xpm"
 
 # include "./queue.h"
 

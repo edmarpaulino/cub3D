@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/13 12:15:14 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/22 21:30:31 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCS			=	ft_isalpha.c \
 					ft_lastchr.c \
 					ft_word_counter.c \
 					ft_clear_split.c \
+					ft_split_len.c \
 					get_next_line.c
 
 INCS			=	-I ./includes
