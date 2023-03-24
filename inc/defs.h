@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 06:53:21 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:31:56 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@
 # define MAP_EXT ".cub"
 # define TEX_EXT ".xpm"
 
+# define MAP_SET "01NSEW "
+# define PLAYER_SET "NSEW"
+
 # include "./queue.h"
 
 typedef struct s_map_file
 {
-	int		*grid;
+	char	**matrix;
 	int		width;
 	int		height;
 	char	*texture_no;

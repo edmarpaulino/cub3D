@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/23 07:38:19 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/23 20:39:41 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,10 @@ SRC_FILES			=	main.c \
 						has_content.c \
 						check_texture.c \
 						get_color.c \
-						load_textures.c
+						load_textures.c \
+						get_matrix_map.c \
+						check_empty.c \
+						load_map.c
 
 OBJ_DIR				=	obj
 OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))

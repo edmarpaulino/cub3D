@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 20:14:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 07:31:30 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:32:07 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_map_file	*get_map_file(char *filename)
 	if (!map_file->file_content)
 		exit_error("Cannot get file content");
 	load_textures(map_file);
+	load_map(map_file);
 	print_map_file(map_file);
 	print_file_content(map_file->file_content);
 	return (map_file);
@@ -58,7 +59,7 @@ t_map_file	*get_map_file(char *filename)
 
 static void	init_map_file(t_map_file *map_file)
 {
-	map_file->grid = NULL;
+	map_file->matrix = NULL;
 	map_file->width = -1;
 	map_file->height = -1;
 	map_file->texture_no = NULL;
