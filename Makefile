@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/25 19:26:18 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/25 19:52:43 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ SRC_FILES			=	main.c \
 						is_in_set.c \
 						format_map.c \
 						load_map.c \
-						check_player.c
+						check_player.c \
+						free_data.c \
+						init_player.c \
+						setup.c
 
 OBJ_DIR				=	obj
 OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
@@ -43,6 +46,8 @@ LIBFT_DIR			=	libft
 LIBFT_LIB			=	-L$(LIBFT_DIR) -lft
 LIBFT_INC			=	-I $(LIBFT_DIR)/includes
 
+LIBS				=	-lmlx -lbsd -lXext -lX11 -lm $(LIBFT_LIB)
+
 CC					=	cc
 CFLAGS				=	-g -Wall -Wextra -Werror 
 
@@ -50,7 +55,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	make all -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFT_LIB) $(LIBFT_INC) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBS) $(LIBFT_INC) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)

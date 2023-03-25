@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:24:42 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 19:47:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 # include "../libft/includes/libft.h"
 # include "./defs.h"
@@ -39,5 +40,8 @@ int			is_in_set(char c, char *set);
 void		load_map(t_map_file *map_file);
 void		check_player(t_map_file *map_file);
 void		format_map(t_map_file *map_file);
+int			free_data(t_data *data);
+void		init_player(t_player *player, char dir, int grid_y, int grid_x);
+void		setup(t_data **data, t_map_file *map_file);
 
 #endif
