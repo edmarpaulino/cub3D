@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 20:14:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 20:32:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 15:40:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static void	print_file_content(t_queue *file_content)
 	}
 }
 
+static void	print_matrix(char **matrix)
+{
+	int	row;
+
+	row = 0;
+	while (matrix[row])
+	{
+		ft_putendl_fd(matrix[row], STDOUT);
+		row++;
+	}
+}
+
 static void	print_map_file(t_map_file *map_file)
 {
 	printf("\n\n");
@@ -35,6 +47,7 @@ static void	print_map_file(t_map_file *map_file)
 	printf("%s\n", map_file->texture_we);
 	printf("%d\n", map_file->ceil_color);
 	printf("%d\n", map_file->floor_color);
+	print_matrix(map_file->matrix);
 	printf("\n\n");
 }
 

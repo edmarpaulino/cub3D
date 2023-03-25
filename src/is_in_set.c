@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_in_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 15:38:50 by edpaulin         ###   ########.fr       */
+/*   Created: 2023/03/25 13:56:14 by edpaulin          #+#    #+#             */
+/*   Updated: 2023/03/25 13:56:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-int	main(int argc, char *argv[])
+int	is_in_set(char c, char *set)
 {
-	t_map_file	*map_file;
+	int	i;
 
-	if (argc < 2)
-		exit_error("Map file was not informed");
-	if (argc > 2)
-		exit_error("The program requires only one map file");
-	map_file = get_map_file(argv[1]);
-	ft_putendl_fd("Welcome to the cub3D", STDOUT);
-	free_map_file(map_file);
+	if (!set)
+		return (0);
+	i = 0;
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
 	return (0);
 }

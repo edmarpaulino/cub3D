@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 10:05:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 11:48:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 14:41:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ static int	check_top(char **matrix)
 	col = 0;
 	while (matrix[row])
 	{
-		if (matrix[row][col] != ' ' && matrix[row][col] != '#')
+		if (matrix[row][col] != ' '
+			&& matrix[row][col] != '#'
+			&& matrix[row][col] != '@')
 			return (0);
 		if (matrix[row][col] == ' ')
+		{
+			matrix[row][col] = '@';
 			row++;
+		}
 		if (!matrix[row] || matrix[row][col] == '#')
 		{
 			col++;
@@ -62,10 +67,15 @@ static int	check_bottom(char **matrix, int height)
 	col = 0;
 	while (row >= 0)
 	{
-		if (matrix[row][col] != ' ' && matrix[row][col] != '#')
+		if (matrix[row][col] != ' '
+			&& matrix[row][col] != '#'
+			&& matrix[row][col] != '@')
 			return (0);
 		if (matrix[row][col] == ' ')
+		{
+			matrix[row][col] = '@';
 			row--;
+		}
 		if (row == 0 || matrix[row][col] == '#')
 		{
 			col++;
@@ -88,10 +98,14 @@ static int	check_left(char **matrix)
 		col = 0;
 		while (matrix[row][col])
 		{
-			if (matrix[row][col] != ' ' && matrix[row][col] != '#')
+			if (matrix[row][col] != ' '
+				&& matrix[row][col] != '#'
+				&& matrix[row][col] != '@')
 				return (0);
 			if (matrix[row][col] == '#')
 				break ;
+			if (matrix[row][col] == ' ')
+				matrix[row][col] = '@';
 			col++;
 		}
 		row++;
@@ -110,10 +124,14 @@ static int	check_right(char **matrix, int width)
 		col = width - 1;
 		while (col >= 0)
 		{
-			if (matrix[row][col] != ' ' && matrix[row][col] != '#')
+			if (matrix[row][col] != ' '
+				&& matrix[row][col] != '#'
+				&& matrix[row][col] != '@')
 				return (0);
 			if (matrix[row][col] == '#')
 				break ;
+			if (matrix[row][col] == ' ')
+				matrix[row][col] = '@';
 			col--;
 		}
 		row++;

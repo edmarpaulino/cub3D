@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/25 12:03:02 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/25 13:56:59 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRC_FILES			=	main.c \
 						check_map_edges.c \
 						replace_matrix_char.c \
 						check_map_outside.c \
-						load_map.c
+						is_in_set.c \
+						load_map.c \
+						check_player.c
 
 OBJ_DIR				=	obj
 OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
