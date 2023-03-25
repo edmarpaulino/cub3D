@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:56:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:16:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void		format_map(t_map_file *map_file);
 int			free_data(t_data *data);
 void		init_player(t_player *player, char dir, int grid_y, int grid_x);
 void		setup(t_data **data, t_map_file *map_file);
+void		key_hook(t_data *data);
 
 #endif

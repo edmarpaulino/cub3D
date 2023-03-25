@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:55:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:09:28 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 
 # define MAP_SET "01NSEW "
 # define PLAYER_SET "NSEW"
+
+# define EXIT 65307
+# define LOOK_LEFT  65361
+# define LOOK_RIGHT 65363
+# define UP 119
+# define DOWN 115
+# define LEFT 97
+# define RIGHT 100
 
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
