@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 20:31:56 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 09:10:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define PLAYER_SET "NSEW"
 
 # include "./queue.h"
+
+typedef struct s_coor
+{
+	int	y;
+	int	x;
+}	t_coor;
 
 typedef struct s_map_file
 {

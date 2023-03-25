@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 20:39:50 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 12:03:31 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void		load_textures(t_map_file *map_file);
 int			get_color(char *texture);
 char		**get_matrix_map(t_queue *file_content);
 void		check_empty(t_map_file *map_file);
+void		define_map_sizes(t_map_file *map_file);
+void		check_map_edges(t_map_file *map_file);
+void		check_map_outside(t_map_file *map_file);
+void		replace_matrix_char(char **matrix, char old_c, char new_c);
 void		load_map(t_map_file *map_file);
 
 #endif

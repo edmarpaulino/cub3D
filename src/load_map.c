@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:23:05 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/23 21:22:17 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 12:06:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	has_only_one_player(t_queue *file_content);
 // one player
 // has no empty lines
 // has no empty columns
-
-// TODO: edges are closed
-// TODO: only spaces outside the map
+// edges are closed
+// only spaces outside the map
+ 
 // TODO: player is inside the map
 
 static void	print_matrix(char **matrix)
@@ -58,6 +58,10 @@ void	load_map(t_map_file *map_file)
 		exit_error("Failed to create map matrix");
 	}
 	check_empty(map_file);
+	define_map_sizes(map_file);
+	check_map_edges(map_file);
+	check_map_outside(map_file);
+	replace_matrix_char(map_file->matrix, '1', '#');
 	print_matrix(map_file->matrix);
 }
 
