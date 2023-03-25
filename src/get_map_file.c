@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 20:14:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 15:40:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:50:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,16 @@ static void	print_matrix(char **matrix)
 static void	print_map_file(t_map_file *map_file)
 {
 	printf("\n\n");
-	printf("%s\n", map_file->texture_no);
-	printf("%s\n", map_file->texture_so);
-	printf("%s\n", map_file->texture_ea);
-	printf("%s\n", map_file->texture_we);
-	printf("%d\n", map_file->ceil_color);
-	printf("%d\n", map_file->floor_color);
 	print_matrix(map_file->matrix);
+	printf("texture_no = %s\n", map_file->texture_no);
+	printf("texture_so = %s\n", map_file->texture_so);
+	printf("texture_ea = %s\n", map_file->texture_ea);
+	printf("texture_we = %s\n", map_file->texture_we);
+	printf("ceil_color = %d\n", map_file->ceil_color);
+	printf("floor_color = %d\n", map_file->floor_color);
+	printf("player_direction = %c\n", map_file->player_direction);
+	printf("player_y = %d\n", map_file->player_y);
+	printf("player_x = %d\n", map_file->player_x);
 	printf("\n\n");
 }
 
@@ -81,7 +84,7 @@ static void	init_map_file(t_map_file *map_file)
 	map_file->texture_we = NULL;
 	map_file->ceil_color = -1;
 	map_file->floor_color = -1;
-	map_file->player_angle = -1;
+	map_file->player_direction = '?';
 	map_file->player_x = -1;
 	map_file->player_y = -1;
 }

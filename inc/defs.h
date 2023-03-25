@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 09:10:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:53:19 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_map_file
 	char	*texture_ea;
 	int		ceil_color;
 	int		floor_color;
-	float	player_angle;
+	char	player_direction;
 	int		player_x;
 	int		player_y;
 	t_queue	*file_content;
