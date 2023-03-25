@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/25 20:16:33 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/25 20:51:50 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,11 @@ SRC_FILES			=	main.c \
 						free_data.c \
 						init_player.c \
 						setup.c \
-						key_hook.c
+						key_hook.c \
+						normalize_angle.c \
+						has_wall_at.c \
+						update.c \
+						game.c
 
 OBJ_DIR				=	obj
 OBJ_FILES			=	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))

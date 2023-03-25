@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 20:16:25 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:54:16 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ int			free_data(t_data *data);
 void		init_player(t_player *player, char dir, int grid_y, int grid_x);
 void		setup(t_data **data, t_map_file *map_file);
 void		key_hook(t_data *data);
+void		normalize_angle(float *angle);
+int			has_wall_at(t_data *data, int x, int y);
+void		update(t_data *data);
+int			game(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:11:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 20:16:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:52:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char *argv[])
 	ft_putendl_fd("Welcome to the cub3D", STDOUT);
 	setup(&data, map_file);
 	key_hook(data);
+	game(data);
+	mlx_loop_hook(data->mlx, &game, data);
 	mlx_loop(data->mlx);
 	free_data(data);
 	free_map_file(map_file);
