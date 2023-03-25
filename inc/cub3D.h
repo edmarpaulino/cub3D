@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:12:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/25 19:24:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void		check_map_outside(t_map_file *map_file);
 int			is_in_set(char c, char *set);
 void		load_map(t_map_file *map_file);
 void		check_player(t_map_file *map_file);
+void		format_map(t_map_file *map_file);
 
 #endif
