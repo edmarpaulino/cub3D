@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 15:51:30 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:25:26 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define TITLE "cub3D"
 
 # define NUM_RAYS (WINDOW_WIDTH)
+# define NUM_TEX 4
 
 # define TILE_SIZE 64
 
@@ -48,6 +49,14 @@
 # define FOV_ANGLE_DEGREE 60
 
 # include "./queue.h"
+
+typedef enum e_tex
+{
+	T_NO,
+	T_SO,
+	T_EA,
+	T_WE
+}	t_tex;
 
 typedef struct s_coor
 {
@@ -144,10 +153,7 @@ typedef struct s_data
 	int			width;
 	int			height;
 	t_img		*canvas;
-	t_img		*north;
-	t_img		*south;
-	t_img		*east;
-	t_img		*west;
+	t_img		*textures[NUM_TEX];
 	t_player	player;
 	t_ray		rays[NUM_RAYS];
 	int			ceil_color;

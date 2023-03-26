@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 12:48:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 15:10:35 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:25:56 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ static void	draw_wall(t_data *data, t_wall *wall, int x)
 		wall->texture_offset_x = (int)data->rays[x].wall_hit_y % TILE_SIZE;
 	else
 		wall->texture_offset_x = (int)data->rays[x].wall_hit_x % TILE_SIZE;
-	if (data->rays[x].wall_texture == 0)
-		wall->texture = data->north;
-	else if (data->rays[x].wall_texture == 1)
-		wall->texture = data->south;
-	else if (data->rays[x].wall_texture == 2)
-		wall->texture = data->east;
-	else
-		wall->texture = data->west;
+	if (data->rays[x].was_hit_vertical
+		&& is_ray_facing_left(data->rays[x].angle))
+		wall->texture_offset_x = TILE_SIZE - wall->texture_offset_x;
+	if (!data->rays[x].was_hit_vertical
+		&& is_ray_facing_down(data->rays[x].angle))
+		wall->texture_offset_x = TILE_SIZE - wall->texture_offset_x;
+	wall->texture = data->textures[data->rays[x].wall_texture];
 	y = wall->top_y;
 	while (y < wall->bottom_y)
 	{

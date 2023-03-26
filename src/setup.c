@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:51:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 12:52:35 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:25:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static void	init_empty(t_data *data)
 	data->window = NULL;
 	data->canvas = NULL;
 	data->grid = NULL;
-	data->north = NULL;
-	data->south = NULL;
-	data->east = NULL;
-	data->west = NULL;
+	data->textures[T_NO] = NULL;
+	data->textures[T_SO] = NULL;
+	data->textures[T_EA] = NULL;
+	data->textures[T_WE] = NULL;
 }
 
 static t_img	*get_canvas(void *mlx)
@@ -89,10 +89,10 @@ static t_img	*get_texture_img(void *mlx, char *filename)
 
 static void	init_textures(t_data *data, t_map_file *map_file)
 {
-	data->north = get_texture_img(data->mlx, map_file->texture_no);
-	data->south = get_texture_img(data->mlx, map_file->texture_so);
-	data->east = get_texture_img(data->mlx, map_file->texture_ea);
-	data->west = get_texture_img(data->mlx, map_file->texture_we);
+	data->textures[T_NO] = get_texture_img(data->mlx, map_file->texture_no);
+	data->textures[T_SO] = get_texture_img(data->mlx, map_file->texture_so);
+	data->textures[T_EA] = get_texture_img(data->mlx, map_file->texture_ea);
+	data->textures[T_WE] = get_texture_img(data->mlx, map_file->texture_we);
 	data->ceil_color = map_file->ceil_color;
 	data->floor_color = map_file->floor_color;
 }
