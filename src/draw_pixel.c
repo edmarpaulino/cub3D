@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 09:50:16 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 11:09:10 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:28:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 {
 	int	pixel;
 
-	pixel = (y * img->size_line) + \
-			(x * 4);
+	pixel = (y * img->size_line) + (x * 4);
 	if (img->endian == 1)
 	{
 		img->addr[pixel + 0] = (color >> 24);
