@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 19:35:38 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:54:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:07:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_player(t_player *player, char dir, int grid_y, int grid_x)
 	player->turn_direction = 0;
 	player->walk_direction = 0;
 	player->rotation_angle = get_initial_rotation_angle(dir);
-	player->turn_speed = 2;
+	player->turn_speed = ONE_RADIAN;
 	player->walk_speed = 2;
 }
 

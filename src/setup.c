@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:51:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:48:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:02:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ void	setup(t_data **data, t_map_file *map_file)
 	init_textures(*data, map_file);
 	init_player(&(*data)->player, map_file->player_direction,
 		map_file->player_y, map_file->player_x);
+	(*data)->grid = map_file->matrix;
+	map_file->matrix = NULL;
+	(*data)->width = map_file->width;
+	(*data)->height = map_file->height;
 	free_map_file(map_file);
+	(*data)->fov_angle = deg_to_rad(FOV_ANGLE_DEGREE);
+	(*data)->dist_proj_plane = ((WINDOW_WIDTH / 2) / tan((*data)->fov_angle) / 2);
 }
 
 static void	init_empty(t_data *data)
@@ -61,19 +67,20 @@ static t_img	*get_canvas(void *mlx)
 	canvas->buffer = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	canvas->addr = mlx_get_data_addr(canvas->buffer, &canvas->bpp,
 			&canvas->size_line, &canvas->endian);
+	canvas->width = WINDOW_WIDTH;
+	canvas->height = WINDOW_HEIGHT;
 	return (canvas);
 }
 
 static t_img	*get_texture_img(void *mlx, char *filename)
 {
-	int		width;
-	int		height;
 	t_img	*texture;
 
 	texture = (t_img *)malloc(sizeof(t_img));
 	if (!texture)
 		return (NULL);
-	texture->buffer = mlx_xpm_file_to_image(mlx, filename, &width, &height);
+	texture->buffer = mlx_xpm_file_to_image(mlx, filename, &texture->width,
+			&texture->height);
 	texture->addr = mlx_get_data_addr(texture->buffer, &texture->bpp,
 			&texture->size_line, &texture->endian);
 	return (texture);

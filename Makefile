@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/25 20:51:50 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/26 10:00:12 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,15 @@ SRC_FILES			=	main.c \
 						check_player.c \
 						free_data.c \
 						init_player.c \
+						deg_to_rad.c \
 						setup.c \
 						key_hook.c \
 						normalize_angle.c \
+						distance_between_points.c \
+						draw_pixel.c \
+						get_pixel.c \
 						has_wall_at.c \
+						cast_all_rays.c \
 						update.c \
 						game.c
 

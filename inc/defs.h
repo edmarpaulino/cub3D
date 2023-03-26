@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 20:09:28 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 09:37:53 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530
+
+# define ONE_RADIAN 0.0174533
+
+# define FOV_ANGLE_DEGREE 60
 
 # include "./queue.h"
 
@@ -103,6 +107,8 @@ typedef struct s_img
 	int		bpp;
 	int		size_line;	
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_data
@@ -121,6 +127,8 @@ typedef struct s_data
 	t_ray		rays[NUM_RAYS];
 	int			ceil_color;
 	int			floor_color;
+	float		fov_angle;
+	float		dist_proj_plane;
 }	t_data;
 
 #endif

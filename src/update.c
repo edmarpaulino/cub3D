@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:25:28 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 20:53:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:06:48 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move_player(t_data *data);
 void	update(t_data *data)
 {
 	move_player(data);
-	// cast_all_rays();
+	cast_all_rays(data);
 }
 
 static void	move_player(t_data *data)
@@ -31,8 +31,8 @@ static void	move_player(t_data *data)
 	player->rotation_angle += player->turn_direction * player->turn_speed;
 	normalize_angle(&player->rotation_angle);
 	move_step = player->walk_direction * player->walk_speed;
-	new_player_x = player->x + cos(player->rotation_angle) * move_step;
-	new_player_y = player->y + sin(player->rotation_angle) * move_step;
+	new_player_x = player->x + (cos(player->rotation_angle) * move_step);
+	new_player_y = player->y + (sin(player->rotation_angle) * move_step);
 	if (!has_wall_at(data, new_player_x, new_player_y))
 	{
 		player->x = new_player_x;

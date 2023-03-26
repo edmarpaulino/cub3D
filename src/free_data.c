@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:05:32 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:07:06 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:02:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	free_data(t_data *data)
 	if (!data)
 		return (0);
 	if (data->grid)
-		free(data->grid);
+		ft_clear_split(data->grid);
 	if (data->mlx)
 	{
 		free_textures(data);
