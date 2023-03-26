@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 13:49:05 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 18:42:53 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:29:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,24 @@ static int	is_player_inside_map(char **matrix, int player_y, int player_x)
 	int	col;
 
 	row = player_y - 1;
-	while (row >= 0 && matrix[row][player_x] != '1')
+	while (row >= 0 && matrix[row][player_x] != '#')
 		row--;
-	if (row < 0 || matrix[row][player_x] != '1')
+	if (row < 0 || matrix[row][player_x] != '#')
 		return (0);
 	row = player_y + 1;
-	while (matrix[row] && matrix[row][player_x] != '1')
+	while (matrix[row] && matrix[row][player_x] != '#')
 		row++;
-	if (matrix[row] == NULL || matrix[row][player_x] != '1')
+	if (matrix[row] == NULL || matrix[row][player_x] != '#')
 		return (0);
 	col = player_x - 1;
-	while (col >= 0 && matrix[player_y][col] != '1')
+	while (col >= 0 && matrix[player_y][col] != '#')
 		col--;
-	if (col < 0 || matrix[player_y][col] != '1')
+	if (col < 0 || matrix[player_y][col] != '#')
 		return (0);
 	col = player_x + 1;
-	while (matrix[player_y][col] && matrix[player_y][col] != '1')
+	while (matrix[player_y][col] && matrix[player_y][col] != '#')
 		col++;
-	if (matrix[player_y][col] == '\0' || matrix[player_y][col] != '1')
+	if (matrix[player_y][col] == '\0' || matrix[player_y][col] != '#')
 		return (0);
 	return (1);
 }

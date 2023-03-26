@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:23:05 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 19:26:33 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:31:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	load_map(t_map_file *map_file)
 	}
 	check_empty(map_file);
 	define_map_sizes(map_file);
-	check_player(map_file);
 	check_map_edges(map_file);
+	check_player(map_file);
 	format_map(map_file);
 }
 
