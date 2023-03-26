@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 21:04:01 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/24 22:30:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:24:23 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,13 @@ void	load_textures(t_map_file *map_file)
 
 static int	is_texture(char *content)
 {
-	int	i;
-
-	i = 0;
-	while (content[i] && content[i] == ' ')
-		i++;
 	return (
-		content[i] == 'N'
-		|| content[i] == 'S'
-		|| content[i] == 'E'
-		|| content[i] == 'W'
-		|| content[i] == 'C'
-		|| content[i] == 'F'
+		content[0] == 'N'
+		|| content[0] == 'S'
+		|| content[0] == 'E'
+		|| content[0] == 'W'
+		|| content[0] == 'C'
+		|| content[0] == 'F'
 	);
 }
 
