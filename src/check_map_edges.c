@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 08:41:42 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 15:05:21 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 14:34:34 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	set_start_point(t_map_file *map_file, t_coor *start)
 		while (matrix[start->y][start->x])
 		{
 			if (matrix[start->y][start->x] == '1'
-				&& start->y < map_file->height
-				&& start->x < map_file->width
+				&& start->y + 1 < map_file->height
+				&& start->x + 1 < map_file->width
 				&& matrix[start->y + 1][start->x] == '1'
 				&& matrix[start->y][start->x + 1] == '1')
 				return ;
