@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 09:37:53 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 12:45:16 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,17 @@ typedef struct s_coor
 	int	x;
 }	t_coor;
 
+typedef struct s_img
+{
+	void	*buffer;
+	char	*addr;
+	int		bpp;
+	int		size_line;	
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct s_map_file
 {
 	char	**matrix;
@@ -84,8 +95,38 @@ typedef struct s_ray
 	float	wall_hit_y;
 	float	distance;
 	int		was_hit_vertical;
-	int		texture;
+	int		wall_texture;
 }	t_ray;
+
+typedef struct s_raycast
+{
+	float	wall_hit_x;
+	float	wall_hit_y;
+	float	distance;
+	int		was_hit_vertical;
+	int		wall_texture;
+	float	x_intercept;
+	float	y_intercept;
+	float	x_step;
+	float	y_step;
+	float	x_to_check;
+	float	y_to_check;
+	float	next_touch_x;
+	float	next_touch_y;
+}	t_raycast;
+
+typedef struct s_wall
+{
+	float	perp_distance;
+	float	height;
+	int		top_y;
+	int		bottom_y;
+	int		texture_offset_x;
+	int		texture_offset_y;
+	t_img	*texture;
+	int		distance_from_top;
+	int		pixel_color;
+}	t_wall;
 
 typedef struct s_player
 {
@@ -99,17 +140,6 @@ typedef struct s_player
 	float	walk_speed;
 	float	turn_speed;
 }	t_player;
-
-typedef struct s_img
-{
-	void	*buffer;
-	char	*addr;
-	int		bpp;
-	int		size_line;	
-	int		endian;
-	int		width;
-	int		height;
-}	t_img;
 
 typedef struct s_data
 {

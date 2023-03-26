@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 10:20:24 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 12:49:19 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int			is_ray_facing_left(float angle);
 int			is_inside_map(t_data *data, float x, float y);
 void		cast_all_rays(t_data *data);
 void		update(t_data *data);
+void		render(t_data *data);
 int			game(t_data *data);
 
 #endif

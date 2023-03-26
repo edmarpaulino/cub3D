@@ -6,160 +6,159 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:56:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 10:24:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 12:03:51 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
 static void	cast_ray(t_data *data, float ray_angle, int strip_id);
+static void	init_horz_ray(t_data *data, t_raycast *horz, float ray_angle);
+static void	cast_horz_ray(t_data *data, t_raycast *horz, float ray_angle);
+static void	init_vert_ray(t_data *data, t_raycast *vert, float ray_angle);
+static void	cast_vert_ray(t_data *data, t_raycast *vert, float ray_angle);
 
 void	cast_all_rays(t_data *data)
 {
 	int		col;
 	float	ray_angle;
-	float	ray_angle_step;
 	float	angle_adjust;
 
 	col = 0;
-	ray_angle_step = data->fov_angle / NUM_RAYS;
 	while (col < NUM_RAYS)
 	{
 		angle_adjust = atan((col - (NUM_RAYS / 2)) / data->dist_proj_plane);
 		ray_angle = data->player.rotation_angle + angle_adjust;
+		normalize_angle(&ray_angle);
 		cast_ray(data, ray_angle, col);
-		ray_angle += ray_angle_step;
 		col++;
 	}
 }
 
 static void	cast_ray(t_data *data, float ray_angle, int strip_id)
 {
-	float	x_intercept;
-	float	y_intercept;
-	float	x_step;
-	float	y_step;
-	int		found_horz_wall_hit;
-	float	horz_wall_hit_x;
-	float	horz_wall_hit_y;
-	int		horz_wall_texture;
-	float	next_horz_touch_x;
-	float	next_horz_touch_y;
-	float	x_to_check;
-	float	y_to_check;
-	int		found_vert_wall_hit;
-	float	vert_wall_hit_x;
-	float	vert_wall_hit_y;
-	int		vert_wall_texture;
-	float	next_vert_touch_x;
-	float	next_vert_touch_y;
-	float	horz_hit_distance;
-	float	vert_hit_distance;
+	t_raycast	vert;
+	t_raycast	horz;
 
-	normalize_angle(&ray_angle);
-	found_horz_wall_hit = 0;
-	horz_wall_hit_x = 0;
-	horz_wall_hit_y = 0;
-	horz_wall_texture = 0;
-	y_intercept = floor(data->player.y / TILE_SIZE) * TILE_SIZE;
-	if (is_ray_facing_down(ray_angle))
-		y_intercept += TILE_SIZE;
-	x_intercept = data->player.x + (y_intercept - data->player.y) / tan(ray_angle);
-	y_step = TILE_SIZE;
-	if (is_ray_facing_up(ray_angle))
-		y_step = -y_step;
-	x_step = TILE_SIZE / tan(ray_angle);
-	if (is_ray_facing_left(ray_angle) && x_step > 0)
-		x_step = -x_step;
-	if (is_ray_facing_right(ray_angle) && x_step < 0)
-		x_step = -x_step;
-	next_horz_touch_x = x_intercept;
-	next_horz_touch_y = y_intercept;
-	while (is_inside_map(data, next_horz_touch_x, next_horz_touch_y))
+	data->rays[strip_id].angle = ray_angle;
+	cast_horz_ray(data, &horz, ray_angle);
+	cast_vert_ray(data, &vert, ray_angle);
+	if (vert.distance < horz.distance)
 	{
-		x_to_check = next_horz_touch_x;
-		y_to_check = next_horz_touch_y;
-		if (is_ray_facing_up(ray_angle))
-			y_to_check -= 1;
-		if (has_wall_at(data, x_to_check, y_to_check))
-		{
-			horz_wall_hit_x = next_horz_touch_x;
-			horz_wall_hit_y = next_horz_touch_y;
-			if (is_ray_facing_up(ray_angle))
-				horz_wall_texture = 0;
-			if (is_ray_facing_down(ray_angle))
-				horz_wall_texture = 1;
-			found_horz_wall_hit = 1;
-			break ;
-		}
-		else
-		{
-			next_horz_touch_x += x_step;
-			next_horz_touch_y += y_step;
-		}
-	}
-	found_vert_wall_hit = 0;
-	vert_wall_hit_x = 0;
-	vert_wall_hit_y = 0;
-	vert_wall_texture = 0;
-	x_intercept = floor(data->player.x / TILE_SIZE) * TILE_SIZE;
-	if (is_ray_facing_right(ray_angle))
-		x_intercept += TILE_SIZE;
-	y_intercept = data->player.y + (x_intercept - data->player.x) * tan(ray_angle);
-	x_step = TILE_SIZE;
-	if (is_ray_facing_left(ray_angle))
-		x_step = -x_step;
-	y_step = TILE_SIZE * tan(ray_angle);
-	if (is_ray_facing_up(ray_angle) && y_step > 0)
-		y_step = -y_step;
-	if (is_ray_facing_down(ray_angle) && y_step < 0)
-		y_step = -y_step;
-	next_vert_touch_x = x_intercept;
-	next_vert_touch_y = y_intercept;
-	while (is_inside_map(data, next_vert_touch_x, next_vert_touch_y))
-	{
-		x_to_check = next_vert_touch_x;
-		if (is_ray_facing_left(ray_angle))
-			x_to_check -= 1;
-		y_to_check = next_vert_touch_y;
-		if (has_wall_at(data, x_to_check, y_to_check))
-		{
-			vert_wall_hit_x = next_vert_touch_x;
-			vert_wall_hit_y = next_vert_touch_y;
-			if (is_ray_facing_right(ray_angle))
-				vert_wall_texture = 2;
-			if (is_ray_facing_left(ray_angle))
-				vert_wall_texture = 3;
-			found_vert_wall_hit = 1;
-			break ;
-		}
-		else
-		{
-			next_vert_touch_x += x_step;
-			next_vert_touch_y += y_step;
-		}
-	}
-	horz_hit_distance = 3.40282347e+38F;
-	if (found_horz_wall_hit)
-		horz_hit_distance = distance_between_points(data->player.x, data->player.y, horz_wall_hit_x, horz_wall_hit_y);
-	vert_hit_distance = 3.40282347e+38F;
-	if (found_vert_wall_hit)
-		vert_hit_distance = distance_between_points(data->player.x, data->player.y, vert_wall_hit_x, vert_wall_hit_y);
-	if (vert_hit_distance < horz_hit_distance)
-	{
-		data->rays[strip_id].distance = vert_hit_distance;
-		data->rays[strip_id].wall_hit_x = vert_wall_hit_x;
-		data->rays[strip_id].wall_hit_y = vert_wall_hit_y;
-		data->rays[strip_id].texture = vert_wall_texture;
+		data->rays[strip_id].distance = vert.distance;
+		data->rays[strip_id].wall_hit_x = vert.wall_hit_x;
+		data->rays[strip_id].wall_hit_y = vert.wall_hit_y;
+		data->rays[strip_id].wall_texture = vert.wall_texture;
 		data->rays[strip_id].was_hit_vertical = 1;
 	}
 	else
 	{
-		data->rays[strip_id].distance = horz_hit_distance;
-		data->rays[strip_id].wall_hit_x = horz_wall_hit_x;
-		data->rays[strip_id].wall_hit_y = horz_wall_hit_y;
-		data->rays[strip_id].texture = horz_wall_texture;
+		data->rays[strip_id].distance = horz.distance;
+		data->rays[strip_id].wall_hit_x = horz.wall_hit_x;
+		data->rays[strip_id].wall_hit_y = horz.wall_hit_y;
+		data->rays[strip_id].wall_texture = horz.wall_texture;
 		data->rays[strip_id].was_hit_vertical = 0;
 	}
-	data->rays[strip_id].angle = ray_angle;
+}
+
+static void	init_horz_ray(t_data *data, t_raycast *horz, float ray_angle)
+{
+	horz->distance = 3.40282347e+38F;
+	horz->wall_hit_x = 0;
+	horz->wall_hit_y = 0;
+	horz->wall_texture = 0;
+	horz->y_intercept = floor(data->player.y / TILE_SIZE) * TILE_SIZE;
+	if (is_ray_facing_down(ray_angle))
+		horz->y_intercept += TILE_SIZE;
+	horz->x_intercept = (data->player.x
+			+ (horz->y_intercept - data->player.y) / tan(ray_angle));
+	horz->y_step = TILE_SIZE;
+	if (is_ray_facing_up(ray_angle))
+		horz->y_step = -horz->y_step;
+	horz->x_step = TILE_SIZE / tan(ray_angle);
+	if ((is_ray_facing_left(ray_angle) && horz->x_step > 0)
+		|| (is_ray_facing_right(ray_angle) && horz->x_step < 0))
+		horz->x_step = -horz->x_step;
+	horz->next_touch_x = horz->x_intercept;
+	horz->next_touch_y = horz->y_intercept;
+}
+
+static void	cast_horz_ray(t_data *data, t_raycast *horz, float ray_angle)
+{
+	init_horz_ray(data, horz, ray_angle);
+	while (is_inside_map(data, horz->next_touch_x, horz->next_touch_y))
+	{
+		horz->x_to_check = horz->next_touch_x;
+		horz->y_to_check = horz->next_touch_y;
+		if (is_ray_facing_up(ray_angle))
+			horz->y_to_check -= 1;
+		if (has_wall_at(data, horz->x_to_check, horz->y_to_check))
+		{
+			horz->wall_hit_x = horz->next_touch_x;
+			horz->wall_hit_y = horz->next_touch_y;
+			if (is_ray_facing_up(ray_angle))
+				horz->wall_texture = 0;
+			if (is_ray_facing_down(ray_angle))
+				horz->wall_texture = 1;
+			horz->distance = distance_between_points(data->player.x,
+					data->player.y, horz->wall_hit_x, horz->wall_hit_y);
+			break ;
+		}
+		else
+		{
+			horz->next_touch_x += horz->x_step;
+			horz->next_touch_y += horz->y_step;
+		}
+	}
+}
+
+static void	init_vert_ray(t_data *data, t_raycast *vert, float ray_angle)
+{
+	vert->distance = 3.40282347e+38F;
+	vert->wall_hit_x = 0;
+	vert->wall_hit_y = 0;
+	vert->wall_texture = 0;
+	vert->x_intercept = floor(data->player.x / TILE_SIZE) * TILE_SIZE;
+	if (is_ray_facing_right(ray_angle))
+		vert->x_intercept += TILE_SIZE;
+	vert->y_intercept = (data->player.y
+			+ (vert->x_intercept - data->player.x) * tan(ray_angle));
+	vert->x_step = TILE_SIZE;
+	if (is_ray_facing_left(ray_angle))
+		vert->x_step = -vert->x_step;
+	vert->y_step = TILE_SIZE * tan(ray_angle);
+	if ((is_ray_facing_up(ray_angle) && vert->y_step > 0)
+		|| (is_ray_facing_down(ray_angle) && vert->y_step < 0))
+		vert->y_step = -vert->y_step;
+	vert->next_touch_x = vert->x_intercept;
+	vert->next_touch_y = vert->y_intercept;
+}
+
+static void	cast_vert_ray(t_data *data, t_raycast *vert, float ray_angle)
+{
+	init_vert_ray(data, vert, ray_angle);
+	while (is_inside_map(data, vert->next_touch_x, vert->next_touch_y))
+	{
+		vert->x_to_check = vert->next_touch_x;
+		if (is_ray_facing_left(ray_angle))
+			vert->x_to_check -= 1;
+		vert->y_to_check = vert->next_touch_y;
+		if (has_wall_at(data, vert->x_to_check, vert->y_to_check))
+		{
+			vert->wall_hit_x = vert->next_touch_x;
+			vert->wall_hit_y = vert->next_touch_y;
+			if (is_ray_facing_right(ray_angle))
+				vert->wall_texture = 2;
+			if (is_ray_facing_left(ray_angle))
+				vert->wall_texture = 3;
+			vert->distance = distance_between_points(data->player.x,
+					data->player.y, vert->wall_hit_x, vert->wall_hit_y);
+			break ;
+		}
+		else
+		{
+			vert->next_touch_x += vert->x_step;
+			vert->next_touch_y += vert->y_step;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:51:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 12:45:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 12:52:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	setup(t_data **data, t_map_file *map_file)
 	(*data)->height = map_file->height;
 	free_map_file(map_file);
 	(*data)->fov_angle = deg_to_rad(FOV_ANGLE_DEGREE);
-	(*data)->dist_proj_plane = ((WINDOW_WIDTH / 2) / tan((*data)->fov_angle / 2));
+	(*data)->dist_proj_plane = ((WINDOW_WIDTH / 2)
+			/ tan((*data)->fov_angle / 2));
 }
 
 static void	init_empty(t_data *data)
