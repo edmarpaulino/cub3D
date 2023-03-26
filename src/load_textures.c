@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 21:04:01 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 19:43:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 20:18:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,6 @@ static void	add_all_textures(t_map_file *map_file, char *content)
 	{
 		free_map_file(map_file);
 		exit_error("Failed to split content");
-	}
-	if (ft_split_len(tex) != 2)
-	{
-		free_map_file(map_file);
-		ft_clear_split(tex);
-		exit_error("Invalid texture assign");
 	}
 	check_texture(map_file, tex);
 	add_texture(map_file, tex);

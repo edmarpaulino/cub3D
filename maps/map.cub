@@ -2,8 +2,8 @@ NO ./images/graystone.xpm
 SO ./images/purplestone.xpm
 EA ./images/bluestone.xpm
 WE ./images/eagle.xpm
-C 47,47,47
-F 142,142,142
+C 47     ,47,      47
+F 142,142     ,142
 
         1111111111111111111111111
         1000000000110000000000001

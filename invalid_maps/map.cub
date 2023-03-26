@@ -2,7 +2,7 @@ NO ./images/graystone.xpm
 SO ./images/mossystone.xpm
 EA ./images/redbrick.xpm
 WE ./images/eagle.xpm
-C 47,47,47
+                                    C               255             ,               200             ,                           160
 F 142,142,142
 
   11111111111111111111111111111111111111
