@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 15:45:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:26:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char		**get_matrix_map(t_queue *file_content);
 void		check_empty(t_map_file *map_file);
 void		define_map_sizes(t_map_file *map_file);
 void		check_map_edges(t_map_file *map_file);
-void		check_map_outside(t_map_file *map_file);
 int			is_in_set(char c, char *set);
 void		load_map(t_map_file *map_file);
 void		check_player(t_map_file *map_file);

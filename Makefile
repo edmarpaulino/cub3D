@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/26 15:45:30 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/26 19:26:49 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ SRC_FILES			=	main.c \
 						check_empty.c \
 						define_map_sizes.c \
 						check_map_edges.c \
-						check_map_outside.c \
 						is_in_set.c \
 						format_map.c \
 						load_map.c \
