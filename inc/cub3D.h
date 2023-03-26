@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 10:00:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:20:24 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ float		distance_between_points(float x1, float y1, float x2, float y2);
 int			get_pixel(t_img *img, int x, int y);
 void		draw_pixel(t_img *img, int x, int y, int color);
 int			has_wall_at(t_data *data, int x, int y);
+int			is_ray_facing_down(float angle);
+int			is_ray_facing_up(float angle);
+int			is_ray_facing_right(float angle);
+int			is_ray_facing_left(float angle);
+int			is_inside_map(t_data *data, float x, float y);
 void		cast_all_rays(t_data *data);
 void		update(t_data *data);
 int			game(t_data *data);

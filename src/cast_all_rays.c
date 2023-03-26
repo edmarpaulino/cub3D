@@ -6,18 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:56:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 09:06:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 10:24:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
 static void	cast_ray(t_data *data, float ray_angle, int strip_id);
-static int	is_ray_facing_down(float angle);
-static int	is_ray_facing_up(float angle);
-static int	is_ray_facing_right(float angle);
-static int	is_ray_facing_left(float angle);
-static int	is_inside_map(t_data *data, float x, float y);
 
 void	cast_all_rays(t_data *data)
 {
@@ -110,7 +105,7 @@ static void	cast_ray(t_data *data, float ray_angle, int strip_id)
 	x_intercept = floor(data->player.x / TILE_SIZE) * TILE_SIZE;
 	if (is_ray_facing_right(ray_angle))
 		x_intercept += TILE_SIZE;
-	y_intercept = data->player.y + (x_intercept / data->player.x) * tan(ray_angle);
+	y_intercept = data->player.y + (x_intercept - data->player.x) * tan(ray_angle);
 	x_step = TILE_SIZE;
 	if (is_ray_facing_left(ray_angle))
 		x_step = -x_step;
@@ -167,29 +162,4 @@ static void	cast_ray(t_data *data, float ray_angle, int strip_id)
 		data->rays[strip_id].was_hit_vertical = 0;
 	}
 	data->rays[strip_id].angle = ray_angle;
-}
-
-static int	is_ray_facing_down(float angle)
-{
-	return (angle > 0 && angle < PI);
-}
-
-static int	is_ray_facing_up(float angle)
-{
-	return (!is_ray_facing_down(angle));
-}
-
-static int	is_ray_facing_right(float angle)
-{
-	return (angle < PI * 0.5 || angle > PI * 1.5);
-}
-
-static int	is_ray_facing_left(float angle)
-{
-	return (!is_ray_facing_right(angle));
-}
-
-static int	is_inside_map(t_data *data, float x, float y)
-{
-	return (x >= 0 && x <= data->width * TILE_SIZE && y >= 0 && y <= data->height * TILE_SIZE);
 }
