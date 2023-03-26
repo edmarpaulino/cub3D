@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/26 12:49:26 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/26 15:45:30 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC_FILES			=	main.c \
 						has_wall_at.c \
 						is_ray_facing.c \
 						is_inside_map.c \
+						cast_ray.c \
 						cast_all_rays.c \
 						update.c \
 						render.c \

@@ -6,17 +6,12 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 12:45:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:51:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFS_H
 # define DEFS_H
-
-// prototype
-// player_angle = N: 1.5PI - S: .5PI - E: 0 - W: PI
-// player_x = ((x_in_grid - 1) * TILE_SIZE) + (TILE_SIZE / 2)
-//player_y = ((y_in_grid - 1) * TILE_SIZE) + (TILE_SIZE / 2)
 
 # define STDIN 0
 # define STDOUT 1
