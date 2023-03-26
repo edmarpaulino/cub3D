@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 12:48:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 12:52:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 14:19:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	render_wall_projection(t_data *data)
 	while (x < NUM_RAYS)
 	{
 		wall.perp_distance = (data->rays[x].distance
-				* cos(data->rays[x].angle) - data->player.rotation_angle);
+				* cos(data->rays[x].angle - data->player.rotation_angle));
 		wall.height = (TILE_SIZE / wall.perp_distance) * data->dist_proj_plane;
 		wall.top_y = (WINDOW_HEIGHT / 2) - (wall.height / 2);
 		if (wall.top_y < 0)
