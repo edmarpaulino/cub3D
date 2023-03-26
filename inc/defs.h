@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 16:25:26 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:36:29 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,11 @@ typedef struct s_player
 	float	height;
 	int		turn_direction;
 	int		walk_direction;
+	int		strafe_direction;
 	float	rotation_angle;
 	float	walk_speed;
 	float	turn_speed;
+	int		strafe_speed;
 }	t_player;
 
 typedef struct s_data

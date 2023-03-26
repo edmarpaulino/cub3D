@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:10:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 20:52:26 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:48:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ static int	key_pressed(int key_code, t_data *data)
 {
 	if (key_code == EXIT)
 		free_data(data);
-	if (key_code == RIGHT)
+	if (key_code == LOOK_RIGHT)
 		data->player.turn_direction = +1;
-	if (key_code == LEFT)
+	if (key_code == LOOK_LEFT)
 		data->player.turn_direction = -1;
+	if (key_code == RIGHT)
+		data->player.strafe_direction = +1;
+	if (key_code == LEFT)
+		data->player.strafe_direction = -1;
 	if (key_code == UP)
 		data->player.walk_direction = +1;
 	if (key_code == DOWN)
@@ -39,10 +43,14 @@ static int	key_pressed(int key_code, t_data *data)
 
 static int	key_released(int key_code, t_data *data)
 {
+	if (key_code == LOOK_RIGHT)
+		data->player.turn_direction = 0;
+	if (key_code == LOOK_LEFT)
+		data->player.turn_direction = 0;
 	if (key_code == RIGHT)
-		data->player.turn_direction = 0;
+		data->player.strafe_direction = 0;
 	if (key_code == LEFT)
-		data->player.turn_direction = 0;
+		data->player.strafe_direction = 0;
 	if (key_code == UP)
 		data->player.walk_direction = 0;
 	if (key_code == DOWN)
