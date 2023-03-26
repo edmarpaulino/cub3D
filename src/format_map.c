@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 19:13:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/25 19:23:27 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:10:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	format_map(t_map_file *map_file)
 		col = 0;
 		while (map_file->matrix[row][col])
 		{
-			if (map_file->matrix[row][col] != '0')
+			if (map_file->matrix[row][col] != '0'
+				&& map_file->matrix[row][col] != ' ')
 				map_file->matrix[row][col] = '1';
 			col++;
 		}
