@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 19:16:14 by edpaulin          #+#    #+#              #
-#    Updated: 2023/03/26 19:26:49 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/03/27 07:20:50 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRC_FILES			=	main.c \
 						check_file.c \
 						get_file_content.c \
 						has_content.c \
+						count_char.c \
 						check_texture.c \
+						check_color.c \
 						get_color.c \
 						load_textures.c \
 						get_matrix_map.c \

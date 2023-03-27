@@ -1,9 +1,9 @@
-NO ./images/graystone.xpm   
-SO ./images/purplestone.xpm
-EA ./images/bluestone.xpm
-WE ./images/eagle.xpm
-C 47     ,47,      47
-F 142,142     ,142
+NO ./images/no_redbrick.xpm  
+SO ./images/so_redbrick.xpm  
+EA ./images/ea_redbrick.xpm  
+WE ./images/we_redbrick.xpm  
+C 220,100,0
+F 225,30,0
 
         1111111111111111111111111
         1000000000110000000000001

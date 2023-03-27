@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 21:04:01 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 20:18:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/27 07:12:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,17 @@ static void	add_all_textures(t_map_file *map_file, char *content)
 		free_map_file(map_file);
 		exit_error("Failed to split content");
 	}
-	check_texture(map_file, tex);
+	if (ft_strcmp(tex[0], "NO") == 0 || ft_strcmp(tex[0], "SO") == 0
+		|| ft_strcmp(tex[0], "EA") == 0 || ft_strcmp(tex[0], "WE") == 0)
+		check_texture(map_file, tex);
+	else if (ft_strcmp(tex[0], "C") == 0 || ft_strcmp(tex[0], "F") == 0)
+		check_color(map_file, tex);
+	else
+	{
+		ft_clear_split(tex);
+		free_map_file(map_file);
+		exit_error("Invalid texture definition");
+	}
 	add_texture(map_file, tex);
 	ft_clear_split(tex);
 }
