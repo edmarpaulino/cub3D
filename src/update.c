@@ -6,21 +6,21 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:25:28 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 16:51:10 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/03/27 07:56:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-static void	move_player(t_data *data);
+static void	update_player(t_data *data);
 
 void	update(t_data *data)
 {
-	move_player(data);
+	update_player(data);
 	cast_all_rays(data);
 }
 
-static void	move_player(t_data *data)
+static void	update_player(t_data *data)
 {
 	float		move_step;
 	float		strafe_step;
@@ -37,7 +37,8 @@ static void	move_player(t_data *data)
 	new_player_y = player->y + sin(player->rotation_angle) * move_step;
 	new_player_x = new_player_x + sin(-player->rotation_angle) * strafe_step;
 	new_player_y = new_player_y + cos(-player->rotation_angle) * strafe_step;
-	if (!has_wall_at(data, new_player_x, new_player_y))
+	if (!has_wall_at(data, new_player_x, new_player_y)
+		&& is_inside_map(data, new_player_x, new_player_y))
 	{
 		player->x = new_player_x;
 		player->y = new_player_y;
