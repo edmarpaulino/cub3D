@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 07:59:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 16:36:29 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:39:31 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define TWO_PI 6.28318530
 
 # define ONE_RADIAN 0.0174533
+# define NINETY_RADIAN 1.5707963267948966
 
 # define FOV_ANGLE_DEGREE 60
 

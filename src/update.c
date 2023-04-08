@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 20:25:28 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/27 07:56:59 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:41:03 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static void	update_player(t_data *data)
 	strafe_step = player->strafe_direction * player->strafe_speed;
 	new_player_x = player->x + cos(player->rotation_angle) * move_step;
 	new_player_y = player->y + sin(player->rotation_angle) * move_step;
-	new_player_x = new_player_x + sin(-player->rotation_angle) * strafe_step;
-	new_player_y = new_player_y + cos(-player->rotation_angle) * strafe_step;
+	new_player_x = new_player_x
+		+ cos(player->rotation_angle + NINETY_RADIAN) * strafe_step;
+	new_player_y = new_player_y
+		+ sin(player->rotation_angle + NINETY_RADIAN) * strafe_step;
 	if (!has_wall_at(data, new_player_x, new_player_y)
 		&& is_inside_map(data, new_player_x, new_player_y))
 	{
