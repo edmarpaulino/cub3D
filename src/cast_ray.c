@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 15:44:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/03/26 15:45:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:55:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ static void	cast_horz_ray(t_data *data, t_raycast *horz, float ray_angle)
 			horz->wall_hit_x = horz->next_touch_x;
 			horz->wall_hit_y = horz->next_touch_y;
 			if (is_ray_facing_up(ray_angle))
-				horz->wall_texture = 0;
+				horz->wall_texture = T_NO;
 			if (is_ray_facing_down(ray_angle))
-				horz->wall_texture = 1;
+				horz->wall_texture = T_SO;
 			horz->distance = distance_between_points(data->player.x,
 					data->player.y, horz->wall_hit_x, horz->wall_hit_y);
 			break ;
@@ -130,9 +130,9 @@ static void	cast_vert_ray(t_data *data, t_raycast *vert, float ray_angle)
 			vert->wall_hit_x = vert->next_touch_x;
 			vert->wall_hit_y = vert->next_touch_y;
 			if (is_ray_facing_right(ray_angle))
-				vert->wall_texture = 2;
+				vert->wall_texture = T_EA;
 			if (is_ray_facing_left(ray_angle))
-				vert->wall_texture = 3;
+				vert->wall_texture = T_WE;
 			vert->distance = distance_between_points(data->player.x,
 					data->player.y, vert->wall_hit_x, vert->wall_hit_y);
 			break ;
